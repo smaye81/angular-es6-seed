@@ -1,11 +1,28 @@
 <!DOCTYPE html>
-<html>
-<body>
-<h1 id="message"></h1>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Angular ES6 Seed</title>
+
+    <!-- Bootstrap -->
+    <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <!--<link href="css/app.css" rel="stylesheet">-->
+
+</head>
+<body ng-app="App">
+
+<section class="main-content">
+    <ui-view></ui-view>
+</section>
+
 <script src="https://google.github.io/traceur-compiler/bin/traceur.js"></script>
 <script>
     traceur.options.experimental = true;
 </script>
-<script src="../dist/all.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="dist/cli.js"></script>
+
+
 </body>
 </html>

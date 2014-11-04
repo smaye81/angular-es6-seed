@@ -1,13 +1,7 @@
-class Greeter {
-    constructor(message) {
-        this.message = message;
-    }
+import {homeModule} from './modules/home/home';
+import {Router} from './router';
 
-    greet() {
-        var element = document.querySelector('#message');
-        element.innerHTML = this.message;
-    }
-};
+var appModule = angular.module("App", ["ui.router", homeModule.name]);
 
-var greeter = new Greeter('Hello, Steve!');
-greeter.greet();
+appModule.config(Router);
+
