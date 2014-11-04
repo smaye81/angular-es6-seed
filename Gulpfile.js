@@ -3,12 +3,14 @@ var sourcemaps = require('gulp-sourcemaps');
 var traceur = require('gulp-traceur');
 var concat = require('gulp-concat');
 var connect = require("gulp-connect");
+var exec = require('child_process').exec;
 
 gulp.task('watch', function () {
 
-    gulp.watch(['!app/**/*_test.js', 'app/*.js'], ['traceur']);
+    gulp.watch(['!app/**/*_test.js', 'app/*.js', 'app/**/*.js'], ['traceur-cli']);
 });
 
+/* Not working with current version of gulp-traceur */
 gulp.task('traceur', function () {
     return gulp.src(['!app/**/*_test.js', 'app/*.js'])
         .pipe(sourcemaps.init())
@@ -16,6 +18,15 @@ gulp.task('traceur', function () {
         .pipe(concat('all.js'))
         .pipe(sourcemaps.write())
         .pipe(gulp.dest('app/dist'));
+});
+
+gulp.task('traceur-cli', function (cb) {
+    exec('traceur app/app.js --out app/dist/cli.js --modules=register', function (err, stdout, stderr) {
+        console.log(stdout);
+        console.log(stderr);
+        if (err) return cb(err);    // return error
+        cb();                       // finished task
+    });
 });
 
 gulp.task('connect', function () {
@@ -27,4 +38,4 @@ gulp.task('connect', function () {
     });
 });
 
-gulp.task('default', ['traceur', 'watch', 'connect']);
+gulp.task('default', ['traceur-cli', 'watch', 'connect']);
