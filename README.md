@@ -24,12 +24,6 @@ To run app:
 * Navigate to localhost:9000
 * $$$
 
-NOTE:  gulp-traceur is currently broken and does not seem to generate register modules correctly.  So, temporarily,
-    until this is fixed, gulp is using traceur CLI to run a traceur command to build the compile output file.
-
-I filed an issue here:
-
-https://github.com/sindresorhus/gulp-traceur/issues/43
 
 To Do:
 
