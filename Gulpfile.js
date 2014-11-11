@@ -7,26 +7,20 @@ var exec = require('child_process').exec;
 
 gulp.task('watch', function () {
 
-    gulp.watch(['!app/**/*_test.js', 'app/*.js', 'app/**/*.js'], ['traceur-cli']);
+    gulp.watch(['!app/**/*_test.js', 'app/*.js', 'app/modules/**/*.js'], ['traceur']);
 });
 
-/* Not working with current version of gulp-traceur */
+/* Sourcemaps seem to not be working when a base is specified */
 gulp.task('traceur', function () {
-    return gulp.src(['!app/**/*_test.js', 'app/*.js'])
-        .pipe(sourcemaps.init())
-        .pipe(traceur({modules: 'register'}))
-        .pipe(concat('all.js'))
-        .pipe(sourcemaps.write())
+    return gulp.src(['!app/**/*_test.js', 'app/*.js', 'app/modules/**/*.js'], {base: './app'})
+        //.pipe(sourcemaps.init())
+        .pipe(traceur({
+            modules: 'register',
+            moduleName : true
+        }))
+        .pipe(concat('bundle.js'))
+        //.pipe(sourcemaps.write())
         .pipe(gulp.dest('app/dist'));
-});
-
-gulp.task('traceur-cli', function (cb) {
-    exec('traceur app/app.js --out app/dist/cli.js --modules=register', function (err, stdout, stderr) {
-        console.log(stdout);
-        console.log(stderr);
-        if (err) return cb(err);    // return error
-        cb();                       // finished task
-    });
 });
 
 gulp.task('connect', function () {
@@ -38,4 +32,4 @@ gulp.task('connect', function () {
     });
 });
 
-gulp.task('default', ['traceur-cli', 'watch', 'connect']);
+gulp.task('default', ['traceur', 'watch', 'connect']);
