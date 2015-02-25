@@ -28,3 +28,4 @@ To run app:
 To Do:
 
 * Tests
+* Add branch for Babel configuration of Traceur
