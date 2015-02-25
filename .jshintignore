@@ -1,0 +1,5 @@
+app/bower_components/
+app/coverage/
+app/less/
+app/other_components/
+app/test-coverage/

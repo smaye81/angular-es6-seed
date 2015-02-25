@@ -1,26 +1,64 @@
 var gulp = require('gulp');
-var sourcemaps = require('gulp-sourcemaps');
-var traceur = require('gulp-traceur');
-var concat = require('gulp-concat');
 var connect = require("gulp-connect");
-var exec = require('child_process').exec;
+var gutil = require('gulp-util');
+var concat = require('gulp-concat');
+var babel = require('gulp-babel');
+var Builder = require('systemjs-builder');
+var runSequence = require('run-sequence').use(gulp);
+var jshint = require('gulp-jshint');
+var path = require('path');
+var source = require('vinyl-source-stream');
+
+var config = {
+    SOURCE_FILES : ['!./app/**/*_test.js', './app/*.js', './app/modules/**/*.js'],
+    BABEL_DEST_DIR : 'systemBuild',
+    BUNDLE_NAME : 'dist/bundle.js'
+};
+
+var options = {
+    config : {
+        baseURL : path.resolve('systemBuild')
+    }
+};
 
 gulp.task('watch', function () {
 
-    gulp.watch(['!app/**/*_test.js', 'app/*.js', 'app/modules/**/*.js'], ['traceur']);
+    gulp.watch(config.SOURCE_FILES, ['build', 'lint']);
 });
 
-/* Sourcemaps seem to not be working when a base is specified */
-gulp.task('traceur', function () {
-    return gulp.src(['!app/**/*_test.js', 'app/*.js', 'app/modules/**/*.js'], {base: './app'})
-        //.pipe(sourcemaps.init())
-        .pipe(traceur({
-            modules: 'register',
-            moduleName : true
+// Runs JSHint Report against all JS files in app
+gulp.task('lint', function () {
+    return gulp.src(config.SOURCE_FILES)
+        .pipe(jshint())
+        .pipe(jshint.reporter('jshint-stylish'))
+        .pipe(jshint.reporter('fail'));
+});
+
+gulp.task('babel', function () {
+
+    return gulp.src(config.SOURCE_FILES, {"base" : "./app"})
+        .pipe(babel({
+            modules : "system"
         }))
-        .pipe(concat('bundle.js'))
-        //.pipe(sourcemaps.write())
-        .pipe(gulp.dest('app/dist'));
+        .pipe(gulp.dest(config.BABEL_DEST_DIR));
+});
+
+gulp.task('systemjs-build', function () {
+
+    var builder = new Builder({
+        baseURL : path.resolve(config.BABEL_DEST_DIR),
+
+        // opt in to Babel for transpiling over Traceur
+        transpiler: 'babel'
+    });
+
+    builder.buildSFX('app', config.BUNDLE_NAME, options)
+        .then(function() {
+            gutil.log('Build Bundle', gutil.colors.cyan('done'));
+        })
+        .catch(function(err) {
+            gutil.log('Build Bundle Err', gutil.colors.red(err));
+        });
 });
 
 gulp.task('connect', function () {
@@ -32,4 +70,8 @@ gulp.task('connect', function () {
     });
 });
 
-gulp.task('default', ['traceur', 'watch', 'connect']);
+gulp.task('build', function(cb) {
+    runSequence('babel', ['systemjs-build'], cb);
+});
+
+gulp.task('default', ['build', 'watch', 'connect']);
