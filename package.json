@@ -22,5 +22,8 @@
     "karma-traceur-preprocessor": "^0.4.0",
     "karma-jasmine": "^0.2.3",
     "karma-phantomjs-launcher": "^0.1.4"
+  },
+  "devDependencies": {
+    "es6-module-loader": "^0.15.0"
   }
 }

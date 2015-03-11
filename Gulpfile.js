@@ -65,7 +65,7 @@ gulp.task('connect', function () {
 
     // Uses gulp-connect plugin to start up a server
     connect.server({
-        root: ['app'],
+        root: ['dist'],
         port: 9000
     });
 });
