@@ -11,9 +11,7 @@
   "dependencies": {
     "gulp": "^3.8.9",
     "gulp-babel": "^4.0.0",
-    "gulp-jshint": "^1.9.2",
     "gulp-util": "^3.0.3",
-    "jshint-stylish": "^1.0.0",
     "run-sequence": "~1.0.2",
     "systemjs-builder": "~0.9.0",
     "vinyl-source-stream": "^1.0.0",
@@ -24,6 +22,8 @@
     "karma-phantomjs-launcher": "^0.1.4"
   },
   "devDependencies": {
-    "es6-module-loader": "^0.15.0"
+    "es6-module-loader": "^0.15.0",
+    "gulp-jshint": "^1.9.4",
+    "jshint-stylish": "^1.0.1"
   }
 }

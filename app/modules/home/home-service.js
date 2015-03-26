@@ -1,4 +1,8 @@
+HomeService.$inject = ['$q'];
+
 function HomeService ($q) {
+
+    "use strict";
 
     this.getGreeting = function (name = "Noname McDefault") {
 
@@ -6,4 +10,4 @@ function HomeService ($q) {
     };
 }
 
-export var HomeService = ['$q', HomeService];
+export var HomeService = HomeService;

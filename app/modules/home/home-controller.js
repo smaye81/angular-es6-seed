@@ -1,4 +1,8 @@
+HomeController.$inject = ['HomeService'];
+
 function HomeController(HomeService) {
+
+    "use strict";
 
     this.HomeService = HomeService;
 
@@ -12,7 +16,6 @@ function HomeController(HomeService) {
 
     // Generator function
     this.run = function* (x) {
-        "use strict";
 
         // x is whatever was passed to run initially at this point
         // the yield statement will yield out the value of x + 1 to the first it.next
@@ -36,16 +39,20 @@ function HomeController(HomeService) {
         // Will return the computed values of x, y, and z (the statements for yield do not change the values)
         //  In other words, x + 1 did not increment the function-local value of x by 1
         return (x + y + z);
-    }
+    };
 }
 
 HomeController.prototype.sayHello = function () {
+
+    "use strict";
 
     // Note 'this' for greeting is bound to this object using lexical scope
     this.HomeService.getGreeting(this.name).then(greeting => this.greeting = greeting);
 };
 
 HomeController.prototype.forOf = function () {
+
+    "use strict";
 
     // Prints out the yielded value of each yield statement
     //  Note that we can't use this when you need to pass a value back since there is no exposed next()
@@ -55,6 +62,8 @@ HomeController.prototype.forOf = function () {
 };
 
 HomeController.prototype.generator  = function () {
+
+    "use strict";
 
     var it = this.run(7);
 
@@ -71,4 +80,4 @@ HomeController.prototype.generator  = function () {
     console.log("Third call to it.next() should return 21: " + three.value);
 };
 
-export var HomeController = ['HomeService', HomeController];
+export var HomeController = HomeController;
