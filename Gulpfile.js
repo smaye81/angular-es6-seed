@@ -3,11 +3,22 @@ var sourcemaps = require('gulp-sourcemaps');
 var traceur = require('gulp-traceur');
 var concat = require('gulp-concat');
 var connect = require("gulp-connect");
-var exec = require('child_process').exec;
+var jshint = require('gulp-jshint');
+
+var SOURCE_FILES = ['!app/**/*_test.js', 'app/*.js', 'app/modules/**/*.js'];
+
+// Runs JSHint Report against all JS files in app
+gulp.task('lint', function () {
+    return gulp.src(SOURCE_FILES)
+        .pipe(jshint())
+        .pipe(jshint.reporter('jshint-stylish'))
+        .pipe(jshint.reporter('fail'));
+});
 
 gulp.task('watch', function () {
 
-    gulp.watch(['!app/**/*_test.js', 'app/*.js', 'app/modules/**/*.js'], ['traceur']);
+    // Lint the JS files when they change
+    gulp.watch(SOURCE_FILES, ['lint', 'traceur']);
 });
 
 /* Sourcemaps seem to not be working when a base is specified */
@@ -32,4 +43,4 @@ gulp.task('connect', function () {
     });
 });
 
-gulp.task('default', ['traceur', 'watch', 'connect']);
+gulp.task('default', ['traceur', 'lint', 'watch', 'connect']);

@@ -1,4 +1,8 @@
+Router.$inject = ['$stateProvider', '$urlRouterProvider'];
+
 function Router($stateProvider, $urlRouterProvider) {
+
+    "use strict";
 
     // For any unmatched url, redirect to /home
     $urlRouterProvider.otherwise("/home");
@@ -16,4 +20,4 @@ function Router($stateProvider, $urlRouterProvider) {
         });
 }
 
-export var Router = ['$stateProvider', '$urlRouterProvider', Router];
+export var Router = Router;
