@@ -1,7 +1,8 @@
+
 angular-es6-seed
 ================
 
-Seed project using Angular and all ES6 syntax (especially modules)
+Seed project using Angular and all ES6 syntax (especially classes and modules)
 
 Uses:
 
@@ -21,11 +22,11 @@ To run app:
 * Run `npm install` from project root
 * Run `bower install` from project root
 * Run `gulp` from the project root
-* Navigate to localhost:9000
-* $$$
+
 
 
 To Do:
 
 * Tests
 * Add branch for Babel configuration of Traceur
+
