@@ -2,7 +2,10 @@
 
 System.register([], function (_export) {
     var HomeController;
+
     function HomeController(HomeService) {
+
+        "use strict";
 
         this.HomeService = HomeService;
 
@@ -38,22 +41,20 @@ System.register([], function (_export) {
             return regeneratorRuntime.wrap(function callee$1$1$(context$2$0) {
                 while (1) switch (context$2$0.prev = context$2$0.next) {
                     case 0:
-                        "use strict";
-
-                        context$2$0.next = 3;
+                        context$2$0.next = 2;
                         return x + 1;
 
-                    case 3:
+                    case 2:
                         context$2$0.t0 = context$2$0.sent;
                         y = 2 * context$2$0.t0;
-                        context$2$0.next = 7;
+                        context$2$0.next = 6;
                         return y / 3;
 
-                    case 7:
+                    case 6:
                         z = context$2$0.sent;
                         return context$2$0.abrupt("return", x + y + z);
 
-                    case 9:
+                    case 8:
                     case "end":
                         return context$2$0.stop();
                 }
@@ -64,8 +65,10 @@ System.register([], function (_export) {
     return {
         setters: [],
         execute: function () {
-            HomeController.prototype.sayHello = function () {
+            HomeController.$inject = ["HomeService"];HomeController.prototype.sayHello = function () {
                 var _this = this;
+
+                "use strict";
 
                 // Note 'this' for greeting is bound to this object using lexical scope
                 this.HomeService.getGreeting(this.name).then(function (greeting) {
@@ -74,6 +77,8 @@ System.register([], function (_export) {
             };
 
             HomeController.prototype.forOf = function () {
+
+                "use strict";
 
                 // Prints out the yielded value of each yield statement
                 //  Note that we can't use this when you need to pass a value back since there is no exposed next()
@@ -85,6 +90,8 @@ System.register([], function (_export) {
             };
 
             HomeController.prototype.generator = function () {
+
+                "use strict";
 
                 var it = this.run(7);
 
@@ -101,10 +108,11 @@ System.register([], function (_export) {
                 console.log("Third call to it.next() should return 21: " + three.value);
             };
 
-            HomeController = _export("HomeController", ["HomeService", HomeController]);
+            HomeController = _export("HomeController", HomeController);
         }
     };
 });
+
 // x is whatever was passed to run initially at this point
 // the yield statement will yield out the value of x + 1 to the first it.next
 

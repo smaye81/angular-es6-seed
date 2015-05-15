@@ -2,7 +2,10 @@
 
 System.register([], function (_export) {
     var Router;
+
     function Router($stateProvider, $urlRouterProvider) {
+
+        "use strict";
 
         // For any unmatched url, redirect to /home
         $urlRouterProvider.otherwise("/home");
@@ -21,7 +24,7 @@ System.register([], function (_export) {
     return {
         setters: [],
         execute: function () {
-            Router = _export("Router", ["$stateProvider", "$urlRouterProvider", Router]);
+            Router.$inject = ["$stateProvider", "$urlRouterProvider"];Router = _export("Router", Router);
         }
     };
 });

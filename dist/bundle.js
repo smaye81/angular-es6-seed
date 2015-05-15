@@ -364,6 +364,7 @@
 System.register("modules/home/home-controller", [], function(_export) {
   var HomeController;
   function HomeController(HomeService) {
+    "use strict";
     this.HomeService = HomeService;
     this.forOfGenerator = regeneratorRuntime.mark(function callee$1$0() {
       return regeneratorRuntime.wrap(function callee$1$0$(context$2$0) {
@@ -397,18 +398,17 @@ System.register("modules/home/home-controller", [], function(_export) {
         while (1)
           switch (context$2$0.prev = context$2$0.next) {
             case 0:
-              "use strict";
-              context$2$0.next = 3;
+              context$2$0.next = 2;
               return x + 1;
-            case 3:
+            case 2:
               context$2$0.t0 = context$2$0.sent;
               y = 2 * context$2$0.t0;
-              context$2$0.next = 7;
+              context$2$0.next = 6;
               return y / 3;
-            case 7:
+            case 6:
               z = context$2$0.sent;
               return context$2$0.abrupt("return", x + y + z);
-            case 9:
+            case 8:
             case "end":
               return context$2$0.stop();
           }
@@ -418,13 +418,16 @@ System.register("modules/home/home-controller", [], function(_export) {
   return {
     setters: [],
     execute: function() {
+      HomeController.$inject = ["HomeService"];
       HomeController.prototype.sayHello = function() {
         var _this = this;
+        "use strict";
         this.HomeService.getGreeting(this.name).then(function(greeting) {
           return _this.greeting = greeting;
         });
       };
       HomeController.prototype.forOf = function() {
+        "use strict";
         for (var _iterator = this.forOfGenerator()[Symbol.iterator](),
             _step; !(_step = _iterator.next()).done; ) {
           var v = _step.value;
@@ -432,6 +435,7 @@ System.register("modules/home/home-controller", [], function(_export) {
         }
       };
       HomeController.prototype.generator = function() {
+        "use strict";
         var it = this.run(7);
         var one = it.next();
         console.log("First call to it.next() should return 8: " + one.value);
@@ -440,7 +444,7 @@ System.register("modules/home/home-controller", [], function(_export) {
         var three = it.next(8);
         console.log("Third call to it.next() should return 21: " + three.value);
       };
-      HomeController = _export("HomeController", ["HomeService", HomeController]);
+      HomeController = _export("HomeController", HomeController);
     }
   };
 });
@@ -449,6 +453,7 @@ System.register("modules/home/home-controller", [], function(_export) {
 System.register("modules/home/home-service", [], function(_export) {
   var HomeService;
   function HomeService($q) {
+    "use strict";
     this.getGreeting = function() {
       var name = arguments[0] === undefined ? "Noname McDefault" : arguments[0];
       return $q(function(resolve) {
@@ -459,7 +464,8 @@ System.register("modules/home/home-service", [], function(_export) {
   return {
     setters: [],
     execute: function() {
-      HomeService = _export("HomeService", ["$q", HomeService]);
+      HomeService.$inject = ["$q"];
+      HomeService = _export("HomeService", HomeService);
     }
   };
 });
@@ -468,6 +474,7 @@ System.register("modules/home/home-service", [], function(_export) {
 System.register("router", [], function(_export) {
   var Router;
   function Router($stateProvider, $urlRouterProvider) {
+    "use strict";
     $urlRouterProvider.otherwise("/home");
     $stateProvider.state("home", {
       url: "/home",
@@ -482,7 +489,8 @@ System.register("router", [], function(_export) {
   return {
     setters: [],
     execute: function() {
-      Router = _export("Router", ["$stateProvider", "$urlRouterProvider", Router]);
+      Router.$inject = ["$stateProvider", "$urlRouterProvider"];
+      Router = _export("Router", Router);
     }
   };
 });
@@ -507,7 +515,7 @@ System.register("modules/home/home", ["./home-controller", "./home-service"], fu
 });
 
 "use strict";
-System.register("app", ["./modules/home/home", "./router"], function(_export) {
+System.register("app", ["modules/home/home", "router"], function(_export) {
   var homeModule,
       Router,
       appModule;

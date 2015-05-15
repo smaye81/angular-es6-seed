@@ -2,7 +2,10 @@
 
 System.register([], function (_export) {
     var HomeService;
+
     function HomeService($q) {
+
+        "use strict";
 
         this.getGreeting = function () {
             var name = arguments[0] === undefined ? "Noname McDefault" : arguments[0];
@@ -16,7 +19,7 @@ System.register([], function (_export) {
     return {
         setters: [],
         execute: function () {
-            HomeService = _export("HomeService", ["$q", HomeService]);
+            HomeService.$inject = ["$q"];HomeService = _export("HomeService", HomeService);
         }
     };
 });

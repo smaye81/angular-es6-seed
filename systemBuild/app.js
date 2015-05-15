@@ -1,6 +1,6 @@
 "use strict";
 
-System.register(["./modules/home/home", "./router"], function (_export) {
+System.register(["modules/home/home", "router"], function (_export) {
   var homeModule, Router, appModule;
   return {
     setters: [function (_modulesHomeHome) {
