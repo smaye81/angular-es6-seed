@@ -586,9 +586,9 @@ System.register("modules/home/home", ["modules/home/home-controller", "modules/h
     execute: function() {
       "use strict";
       homeModule = angular.module("Home", []);
-      _export("homeModule", homeModule);
       homeModule.controller("HomeCtrl", HomeController);
       homeModule.service("HomeService", HomeService);
+      _export("default", homeModule);
     }
   };
 });
@@ -599,7 +599,7 @@ System.register("app", ["modules/home/home", "router"], function(_export) {
       appModule;
   return {
     setters: [function(_modulesHomeHome) {
-      homeModule = _modulesHomeHome.homeModule;
+      homeModule = _modulesHomeHome["default"];
     }, function(_router) {
       Router = _router.Router;
     }],
