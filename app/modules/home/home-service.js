@@ -1,13 +1,16 @@
-HomeService.$inject = ['$q'];
 
-function HomeService ($q) {
+class HomeService {
 
-    "use strict";
+    constructor($q){
+        this.$q = $q;
+    }
 
-    this.getGreeting = function (name = "Noname McDefault") {
+    getGreeting(name = "Noname McDefault"){
+        return this.$q(resolve => resolve(`Hello, ${name}.  Welcome to Angular in ES6!!`));
+    }
 
-        return $q(resolve => resolve(`Hello, ${name}.  Welcome to Angular in ES6!!`));
-    };
 }
 
-export var HomeService = HomeService;
+HomeService.$inject = ['$q'];
+
+export default HomeService;

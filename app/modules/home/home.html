@@ -1,10 +1,8 @@
 <section>
-    <label for="name">What's your name yo?</label>
+    <label for="name">What's your name?</label>
     <input id="name" ng-model="homeCtrl.name" type="text"/>
     <button class="btn btn-primary" ng-click="homeCtrl.sayHello()">Say Hello</button>
     <div ng-if="homeCtrl.greeting">
         <p>{{homeCtrl.greeting}}</p>
-        <button class="btn btn-secondary" ng-click="homeCtrl.generator()">Generators</button>
-        <button class="btn btn-secondary" ng-click="homeCtrl.forOf()">For...Of</button>
     </div>
 </section>
