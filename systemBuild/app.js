@@ -1,5 +1,3 @@
-"use strict";
-
 System.register(["modules/home/home", "router"], function (_export) {
   var homeModule, Router, appModule;
   return {
@@ -9,6 +7,8 @@ System.register(["modules/home/home", "router"], function (_export) {
       Router = _router.Router;
     }],
     execute: function () {
+      "use strict";
+
       appModule = angular.module("App", ["ui.router", homeModule.name]);
 
       appModule.config(Router);

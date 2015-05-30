@@ -1,5 +1,3 @@
-"use strict";
-
 System.register([], function (_export) {
     var Router;
 
@@ -24,7 +22,11 @@ System.register([], function (_export) {
     return {
         setters: [],
         execute: function () {
-            Router.$inject = ["$stateProvider", "$urlRouterProvider"];Router = _export("Router", Router);
+            "use strict";
+
+            Router.$inject = ["$stateProvider", "$urlRouterProvider"];Router = Router;
+
+            _export("Router", Router);
         }
     };
 });

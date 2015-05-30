@@ -1,5 +1,3 @@
-"use strict";
-
 System.register([], function (_export) {
     var HomeController;
 
@@ -65,6 +63,8 @@ System.register([], function (_export) {
     return {
         setters: [],
         execute: function () {
+            "use strict";
+
             HomeController.$inject = ["HomeService"];HomeController.prototype.sayHello = function () {
                 var _this = this;
 
@@ -82,10 +82,29 @@ System.register([], function (_export) {
 
                 // Prints out the yielded value of each yield statement
                 //  Note that we can't use this when you need to pass a value back since there is no exposed next()
-                for (var _iterator = this.forOfGenerator()[Symbol.iterator](), _step; !(_step = _iterator.next()).done;) {
-                    var v = _step.value;
+                var _iteratorNormalCompletion = true;
+                var _didIteratorError = false;
+                var _iteratorError = undefined;
 
-                    console.log(v);
+                try {
+                    for (var _iterator = this.forOfGenerator()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                        var v = _step.value;
+
+                        console.log(v);
+                    }
+                } catch (err) {
+                    _didIteratorError = true;
+                    _iteratorError = err;
+                } finally {
+                    try {
+                        if (!_iteratorNormalCompletion && _iterator["return"]) {
+                            _iterator["return"]();
+                        }
+                    } finally {
+                        if (_didIteratorError) {
+                            throw _iteratorError;
+                        }
+                    }
                 }
             };
 
@@ -108,7 +127,9 @@ System.register([], function (_export) {
                 console.log("Third call to it.next() should return 21: " + three.value);
             };
 
-            HomeController = _export("HomeController", HomeController);
+            HomeController = HomeController;
+
+            _export("HomeController", HomeController);
         }
     };
 });

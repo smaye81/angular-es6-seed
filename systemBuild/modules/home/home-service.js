@@ -1,5 +1,3 @@
-"use strict";
-
 System.register([], function (_export) {
     var HomeService;
 
@@ -19,7 +17,11 @@ System.register([], function (_export) {
     return {
         setters: [],
         execute: function () {
-            HomeService.$inject = ["$q"];HomeService = _export("HomeService", HomeService);
+            "use strict";
+
+            HomeService.$inject = ["$q"];HomeService = HomeService;
+
+            _export("HomeService", HomeService);
         }
     };
 });

@@ -360,7 +360,6 @@
 
 ('app', function(System) {
 
-"use strict";
 System.register("modules/home/home-controller", [], function(_export) {
   var HomeController;
   function HomeController(HomeService) {
@@ -418,6 +417,7 @@ System.register("modules/home/home-controller", [], function(_export) {
   return {
     setters: [],
     execute: function() {
+      "use strict";
       HomeController.$inject = ["HomeService"];
       HomeController.prototype.sayHello = function() {
         var _this = this;
@@ -428,10 +428,28 @@ System.register("modules/home/home-controller", [], function(_export) {
       };
       HomeController.prototype.forOf = function() {
         "use strict";
-        for (var _iterator = this.forOfGenerator()[Symbol.iterator](),
-            _step; !(_step = _iterator.next()).done; ) {
-          var v = _step.value;
-          console.log(v);
+        var _iteratorNormalCompletion = true;
+        var _didIteratorError = false;
+        var _iteratorError = undefined;
+        try {
+          for (var _iterator = this.forOfGenerator()[Symbol.iterator](),
+              _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+            var v = _step.value;
+            console.log(v);
+          }
+        } catch (err) {
+          _didIteratorError = true;
+          _iteratorError = err;
+        } finally {
+          try {
+            if (!_iteratorNormalCompletion && _iterator["return"]) {
+              _iterator["return"]();
+            }
+          } finally {
+            if (_didIteratorError) {
+              throw _iteratorError;
+            }
+          }
         }
       };
       HomeController.prototype.generator = function() {
@@ -444,12 +462,12 @@ System.register("modules/home/home-controller", [], function(_export) {
         var three = it.next(8);
         console.log("Third call to it.next() should return 21: " + three.value);
       };
-      HomeController = _export("HomeController", HomeController);
+      HomeController = HomeController;
+      _export("HomeController", HomeController);
     }
   };
 });
 
-"use strict";
 System.register("modules/home/home-service", [], function(_export) {
   var HomeService;
   function HomeService($q) {
@@ -464,13 +482,14 @@ System.register("modules/home/home-service", [], function(_export) {
   return {
     setters: [],
     execute: function() {
+      "use strict";
       HomeService.$inject = ["$q"];
-      HomeService = _export("HomeService", HomeService);
+      HomeService = HomeService;
+      _export("HomeService", HomeService);
     }
   };
 });
 
-"use strict";
 System.register("router", [], function(_export) {
   var Router;
   function Router($stateProvider, $urlRouterProvider) {
@@ -489,14 +508,15 @@ System.register("router", [], function(_export) {
   return {
     setters: [],
     execute: function() {
+      "use strict";
       Router.$inject = ["$stateProvider", "$urlRouterProvider"];
-      Router = _export("Router", Router);
+      Router = Router;
+      _export("Router", Router);
     }
   };
 });
 
-"use strict";
-System.register("modules/home/home", ["./home-controller", "./home-service"], function(_export) {
+System.register("modules/home/home", ["modules/home/home-controller", "modules/home/home-service"], function(_export) {
   var HomeController,
       HomeService,
       homeModule;
@@ -507,14 +527,15 @@ System.register("modules/home/home", ["./home-controller", "./home-service"], fu
       HomeService = _homeService.HomeService;
     }],
     execute: function() {
-      homeModule = _export("homeModule", angular.module("Home", []));
+      "use strict";
+      homeModule = angular.module("Home", []);
+      _export("homeModule", homeModule);
       homeModule.controller("HomeCtrl", HomeController);
       homeModule.service("HomeService", HomeService);
     }
   };
 });
 
-"use strict";
 System.register("app", ["modules/home/home", "router"], function(_export) {
   var homeModule,
       Router,
@@ -526,6 +547,7 @@ System.register("app", ["modules/home/home", "router"], function(_export) {
       Router = _router.Router;
     }],
     execute: function() {
+      "use strict";
       appModule = angular.module("App", ["ui.router", homeModule.name]);
       appModule.config(Router);
     }

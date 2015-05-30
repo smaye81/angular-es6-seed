@@ -1,5 +1,3 @@
-"use strict";
-
 System.register(["./home-controller", "./home-service"], function (_export) {
   var HomeController, HomeService, homeModule;
   return {
@@ -9,7 +7,11 @@ System.register(["./home-controller", "./home-service"], function (_export) {
       HomeService = _homeService.HomeService;
     }],
     execute: function () {
-      homeModule = _export("homeModule", angular.module("Home", []));
+      "use strict";
+
+      homeModule = angular.module("Home", []);
+
+      _export("homeModule", homeModule);
 
       homeModule.controller("HomeCtrl", HomeController);
       homeModule.service("HomeService", HomeService);
