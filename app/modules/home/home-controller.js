@@ -1,12 +1,10 @@
-HomeController.$inject = ['HomeService'];
+class HomeController {
 
-function HomeController(HomeService) {
+    constructor(HomeService) {
+        this.HomeService = HomeService;
+    }
 
-    "use strict";
-
-    this.HomeService = HomeService;
-
-    this.forOfGenerator = function* () {
+    *forOfGenerator() {
 
         yield "abc";
         yield 123;
@@ -15,7 +13,7 @@ function HomeController(HomeService) {
     };
 
     // Generator function
-    this.run = function* (x) {
+    *run(x) {
 
         // x is whatever was passed to run initially at this point
         // the yield statement will yield out the value of x + 1 to the first it.next
@@ -40,44 +38,43 @@ function HomeController(HomeService) {
         //  In other words, x + 1 did not increment the function-local value of x by 1
         return (x + y + z);
     };
+
+    sayHello() {
+        "use strict";
+
+        // Note 'this' for greeting is bound to this object using lexical scope
+        this.HomeService.getGreeting(this.name).then(greeting => this.greeting = greeting);
+    }
+
+    forOf() {
+        "use strict";
+
+        // Prints out the yielded value of each yield statement
+        //  Note that we can't use this when you need to pass a value back since there is no exposed next()
+        for (let v of this.forOfGenerator()) {
+            console.log(v);
+        }
+    }
+
+    generator() {
+        "use strict";
+
+        var it = this.run(7);
+
+        var one = it.next();
+
+        console.log("First call to it.next() should return 8: " + one.value);
+
+        var two = it.next(3);
+
+        console.log("Second call to it.next() should return 2: " + two.value);
+
+        var three = it.next(8);
+
+        console.log("Third call to it.next() should return 21: " + three.value);
+    }
 }
 
-HomeController.prototype.sayHello = function () {
+HomeController.$inject = ['HomeService'];
 
-    "use strict";
-
-    // Note 'this' for greeting is bound to this object using lexical scope
-    this.HomeService.getGreeting(this.name).then(greeting => this.greeting = greeting);
-};
-
-HomeController.prototype.forOf = function () {
-
-    "use strict";
-
-    // Prints out the yielded value of each yield statement
-    //  Note that we can't use this when you need to pass a value back since there is no exposed next()
-    for (let v of this.forOfGenerator()) {
-        console.log(v);
-    }
-};
-
-HomeController.prototype.generator  = function () {
-
-    "use strict";
-
-    var it = this.run(7);
-
-    var one = it.next();
-
-    console.log("First call to it.next() should return 8: " + one.value);
-
-    var two = it.next(3);
-
-    console.log("Second call to it.next() should return 2: " + two.value);
-
-    var three = it.next(8);
-
-    console.log("Third call to it.next() should return 21: " + three.value);
-};
-
-export var HomeController = HomeController;
+export default HomeController;

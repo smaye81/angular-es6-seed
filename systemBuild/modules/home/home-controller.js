@@ -1,135 +1,150 @@
 System.register([], function (_export) {
-    var HomeController;
-
-    function HomeController(HomeService) {
-
-        "use strict";
-
-        this.HomeService = HomeService;
-
-        this.forOfGenerator = regeneratorRuntime.mark(function callee$1$0() {
-            return regeneratorRuntime.wrap(function callee$1$0$(context$2$0) {
-                while (1) switch (context$2$0.prev = context$2$0.next) {
-                    case 0:
-                        context$2$0.next = 2;
-                        return "abc";
-
-                    case 2:
-                        context$2$0.next = 4;
-                        return 123;
-
-                    case 4:
-                        context$2$0.next = 6;
-                        return ["1", "2", "3"];
-
-                    case 6:
-                        context$2$0.next = 8;
-                        return { one: 1, two: 2 };
-
-                    case 8:
-                    case "end":
-                        return context$2$0.stop();
-                }
-            }, callee$1$0, this);
-        });
-
-        // Generator function
-        this.run = regeneratorRuntime.mark(function callee$1$1(x) {
-            var y, z;
-            return regeneratorRuntime.wrap(function callee$1$1$(context$2$0) {
-                while (1) switch (context$2$0.prev = context$2$0.next) {
-                    case 0:
-                        context$2$0.next = 2;
-                        return x + 1;
-
-                    case 2:
-                        context$2$0.t0 = context$2$0.sent;
-                        y = 2 * context$2$0.t0;
-                        context$2$0.next = 6;
-                        return y / 3;
-
-                    case 6:
-                        z = context$2$0.sent;
-                        return context$2$0.abrupt("return", x + y + z);
-
-                    case 8:
-                    case "end":
-                        return context$2$0.stop();
-                }
-            }, callee$1$1, this);
-        });
-    }
+    var _createClass, _classCallCheck, HomeController;
 
     return {
         setters: [],
         execute: function () {
             "use strict";
 
-            HomeController.$inject = ["HomeService"];HomeController.prototype.sayHello = function () {
-                var _this = this;
+            _createClass = (function () { function defineProperties(target, props) { for (var key in props) { var prop = props[key]; prop.configurable = true; if (prop.value) prop.writable = true; } Object.defineProperties(target, props); } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-                "use strict";
+            _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
 
-                // Note 'this' for greeting is bound to this object using lexical scope
-                this.HomeService.getGreeting(this.name).then(function (greeting) {
-                    return _this.greeting = greeting;
-                });
-            };
+            HomeController = (function () {
+                function HomeController(HomeService) {
+                    _classCallCheck(this, HomeController);
 
-            HomeController.prototype.forOf = function () {
-
-                "use strict";
-
-                // Prints out the yielded value of each yield statement
-                //  Note that we can't use this when you need to pass a value back since there is no exposed next()
-                var _iteratorNormalCompletion = true;
-                var _didIteratorError = false;
-                var _iteratorError = undefined;
-
-                try {
-                    for (var _iterator = this.forOfGenerator()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                        var v = _step.value;
-
-                        console.log(v);
-                    }
-                } catch (err) {
-                    _didIteratorError = true;
-                    _iteratorError = err;
-                } finally {
-                    try {
-                        if (!_iteratorNormalCompletion && _iterator["return"]) {
-                            _iterator["return"]();
-                        }
-                    } finally {
-                        if (_didIteratorError) {
-                            throw _iteratorError;
-                        }
-                    }
+                    this.HomeService = HomeService;
                 }
-            };
 
-            HomeController.prototype.generator = function () {
+                _createClass(HomeController, {
+                    forOfGenerator: {
+                        value: regeneratorRuntime.mark(function forOfGenerator() {
+                            return regeneratorRuntime.wrap(function forOfGenerator$(context$2$0) {
+                                while (1) switch (context$2$0.prev = context$2$0.next) {
+                                    case 0:
+                                        context$2$0.next = 2;
+                                        return "abc";
 
-                "use strict";
+                                    case 2:
+                                        context$2$0.next = 4;
+                                        return 123;
 
-                var it = this.run(7);
+                                    case 4:
+                                        context$2$0.next = 6;
+                                        return ["1", "2", "3"];
 
-                var one = it.next();
+                                    case 6:
+                                        context$2$0.next = 8;
+                                        return { one: 1, two: 2 };
 
-                console.log("First call to it.next() should return 8: " + one.value);
+                                    case 8:
+                                    case "end":
+                                        return context$2$0.stop();
+                                }
+                            }, forOfGenerator, this);
+                        })
+                    },
+                    run: {
 
-                var two = it.next(3);
+                        // Generator function
 
-                console.log("Second call to it.next() should return 2: " + two.value);
+                        value: regeneratorRuntime.mark(function run(x) {
+                            var y, z;
+                            return regeneratorRuntime.wrap(function run$(context$2$0) {
+                                while (1) switch (context$2$0.prev = context$2$0.next) {
+                                    case 0:
+                                        context$2$0.next = 2;
+                                        return x + 1;
 
-                var three = it.next(8);
+                                    case 2:
+                                        context$2$0.t0 = context$2$0.sent;
+                                        y = 2 * context$2$0.t0;
+                                        context$2$0.next = 6;
+                                        return y / 3;
 
-                console.log("Third call to it.next() should return 21: " + three.value);
-            };
+                                    case 6:
+                                        z = context$2$0.sent;
+                                        return context$2$0.abrupt("return", x + y + z);
 
-            HomeController = HomeController;
+                                    case 8:
+                                    case "end":
+                                        return context$2$0.stop();
+                                }
+                            }, run, this);
+                        })
+                    },
+                    sayHello: {
+                        value: function sayHello() {
+                            var _this = this;
 
-            _export("HomeController", HomeController);
+                            "use strict";
+
+                            // Note 'this' for greeting is bound to this object using lexical scope
+                            this.HomeService.getGreeting(this.name).then(function (greeting) {
+                                return _this.greeting = greeting;
+                            });
+                        }
+                    },
+                    forOf: {
+                        value: function forOf() {
+                            "use strict";
+
+                            // Prints out the yielded value of each yield statement
+                            //  Note that we can't use this when you need to pass a value back since there is no exposed next()
+                            var _iteratorNormalCompletion = true;
+                            var _didIteratorError = false;
+                            var _iteratorError = undefined;
+
+                            try {
+                                for (var _iterator = this.forOfGenerator()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                                    var v = _step.value;
+
+                                    console.log(v);
+                                }
+                            } catch (err) {
+                                _didIteratorError = true;
+                                _iteratorError = err;
+                            } finally {
+                                try {
+                                    if (!_iteratorNormalCompletion && _iterator["return"]) {
+                                        _iterator["return"]();
+                                    }
+                                } finally {
+                                    if (_didIteratorError) {
+                                        throw _iteratorError;
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    generator: {
+                        value: function generator() {
+                            "use strict";
+
+                            var it = this.run(7);
+
+                            var one = it.next();
+
+                            console.log("First call to it.next() should return 8: " + one.value);
+
+                            var two = it.next(3);
+
+                            console.log("Second call to it.next() should return 2: " + two.value);
+
+                            var three = it.next(8);
+
+                            console.log("Third call to it.next() should return 21: " + three.value);
+                        }
+                    }
+                });
+
+                return HomeController;
+            })();
+
+            HomeController.$inject = ["HomeService"];
+
+            _export("default", HomeController);
         }
     };
 });

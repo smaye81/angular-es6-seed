@@ -2,9 +2,9 @@ System.register(["./home-controller", "./home-service"], function (_export) {
   var HomeController, HomeService, homeModule;
   return {
     setters: [function (_homeController) {
-      HomeController = _homeController.HomeController;
+      HomeController = _homeController["default"];
     }, function (_homeService) {
-      HomeService = _homeService.HomeService;
+      HomeService = _homeService["default"];
     }],
     execute: function () {
       "use strict";

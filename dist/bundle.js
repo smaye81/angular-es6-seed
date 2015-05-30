@@ -361,131 +361,188 @@
 ('app', function(System) {
 
 System.register("modules/home/home-controller", [], function(_export) {
-  var HomeController;
-  function HomeController(HomeService) {
-    "use strict";
-    this.HomeService = HomeService;
-    this.forOfGenerator = regeneratorRuntime.mark(function callee$1$0() {
-      return regeneratorRuntime.wrap(function callee$1$0$(context$2$0) {
-        while (1)
-          switch (context$2$0.prev = context$2$0.next) {
-            case 0:
-              context$2$0.next = 2;
-              return "abc";
-            case 2:
-              context$2$0.next = 4;
-              return 123;
-            case 4:
-              context$2$0.next = 6;
-              return ["1", "2", "3"];
-            case 6:
-              context$2$0.next = 8;
-              return {
-                one: 1,
-                two: 2
-              };
-            case 8:
-            case "end":
-              return context$2$0.stop();
-          }
-      }, callee$1$0, this);
-    });
-    this.run = regeneratorRuntime.mark(function callee$1$1(x) {
-      var y,
-          z;
-      return regeneratorRuntime.wrap(function callee$1$1$(context$2$0) {
-        while (1)
-          switch (context$2$0.prev = context$2$0.next) {
-            case 0:
-              context$2$0.next = 2;
-              return x + 1;
-            case 2:
-              context$2$0.t0 = context$2$0.sent;
-              y = 2 * context$2$0.t0;
-              context$2$0.next = 6;
-              return y / 3;
-            case 6:
-              z = context$2$0.sent;
-              return context$2$0.abrupt("return", x + y + z);
-            case 8:
-            case "end":
-              return context$2$0.stop();
-          }
-      }, callee$1$1, this);
-    });
-  }
+  var _createClass,
+      _classCallCheck,
+      HomeController;
   return {
     setters: [],
     execute: function() {
       "use strict";
-      HomeController.$inject = ["HomeService"];
-      HomeController.prototype.sayHello = function() {
-        var _this = this;
-        "use strict";
-        this.HomeService.getGreeting(this.name).then(function(greeting) {
-          return _this.greeting = greeting;
-        });
-      };
-      HomeController.prototype.forOf = function() {
-        "use strict";
-        var _iteratorNormalCompletion = true;
-        var _didIteratorError = false;
-        var _iteratorError = undefined;
-        try {
-          for (var _iterator = this.forOfGenerator()[Symbol.iterator](),
-              _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-            var v = _step.value;
-            console.log(v);
+      _createClass = (function() {
+        function defineProperties(target, props) {
+          for (var key in props) {
+            var prop = props[key];
+            prop.configurable = true;
+            if (prop.value)
+              prop.writable = true;
           }
-        } catch (err) {
-          _didIteratorError = true;
-          _iteratorError = err;
-        } finally {
-          try {
-            if (!_iteratorNormalCompletion && _iterator["return"]) {
-              _iterator["return"]();
-            }
-          } finally {
-            if (_didIteratorError) {
-              throw _iteratorError;
-            }
-          }
+          Object.defineProperties(target, props);
+        }
+        return function(Constructor, protoProps, staticProps) {
+          if (protoProps)
+            defineProperties(Constructor.prototype, protoProps);
+          if (staticProps)
+            defineProperties(Constructor, staticProps);
+          return Constructor;
+        };
+      })();
+      _classCallCheck = function(instance, Constructor) {
+        if (!(instance instanceof Constructor)) {
+          throw new TypeError("Cannot call a class as a function");
         }
       };
-      HomeController.prototype.generator = function() {
-        "use strict";
-        var it = this.run(7);
-        var one = it.next();
-        console.log("First call to it.next() should return 8: " + one.value);
-        var two = it.next(3);
-        console.log("Second call to it.next() should return 2: " + two.value);
-        var three = it.next(8);
-        console.log("Third call to it.next() should return 21: " + three.value);
-      };
-      HomeController = HomeController;
-      _export("HomeController", HomeController);
+      HomeController = (function() {
+        function HomeController(HomeService) {
+          _classCallCheck(this, HomeController);
+          this.HomeService = HomeService;
+        }
+        _createClass(HomeController, {
+          forOfGenerator: {value: regeneratorRuntime.mark(function forOfGenerator() {
+              return regeneratorRuntime.wrap(function forOfGenerator$(context$2$0) {
+                while (1)
+                  switch (context$2$0.prev = context$2$0.next) {
+                    case 0:
+                      context$2$0.next = 2;
+                      return "abc";
+                    case 2:
+                      context$2$0.next = 4;
+                      return 123;
+                    case 4:
+                      context$2$0.next = 6;
+                      return ["1", "2", "3"];
+                    case 6:
+                      context$2$0.next = 8;
+                      return {
+                        one: 1,
+                        two: 2
+                      };
+                    case 8:
+                    case "end":
+                      return context$2$0.stop();
+                  }
+              }, forOfGenerator, this);
+            })},
+          run: {value: regeneratorRuntime.mark(function run(x) {
+              var y,
+                  z;
+              return regeneratorRuntime.wrap(function run$(context$2$0) {
+                while (1)
+                  switch (context$2$0.prev = context$2$0.next) {
+                    case 0:
+                      context$2$0.next = 2;
+                      return x + 1;
+                    case 2:
+                      context$2$0.t0 = context$2$0.sent;
+                      y = 2 * context$2$0.t0;
+                      context$2$0.next = 6;
+                      return y / 3;
+                    case 6:
+                      z = context$2$0.sent;
+                      return context$2$0.abrupt("return", x + y + z);
+                    case 8:
+                    case "end":
+                      return context$2$0.stop();
+                  }
+              }, run, this);
+            })},
+          sayHello: {value: function sayHello() {
+              var _this = this;
+              "use strict";
+              this.HomeService.getGreeting(this.name).then(function(greeting) {
+                return _this.greeting = greeting;
+              });
+            }},
+          forOf: {value: function forOf() {
+              "use strict";
+              var _iteratorNormalCompletion = true;
+              var _didIteratorError = false;
+              var _iteratorError = undefined;
+              try {
+                for (var _iterator = this.forOfGenerator()[Symbol.iterator](),
+                    _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                  var v = _step.value;
+                  console.log(v);
+                }
+              } catch (err) {
+                _didIteratorError = true;
+                _iteratorError = err;
+              } finally {
+                try {
+                  if (!_iteratorNormalCompletion && _iterator["return"]) {
+                    _iterator["return"]();
+                  }
+                } finally {
+                  if (_didIteratorError) {
+                    throw _iteratorError;
+                  }
+                }
+              }
+            }},
+          generator: {value: function generator() {
+              "use strict";
+              var it = this.run(7);
+              var one = it.next();
+              console.log("First call to it.next() should return 8: " + one.value);
+              var two = it.next(3);
+              console.log("Second call to it.next() should return 2: " + two.value);
+              var three = it.next(8);
+              console.log("Third call to it.next() should return 21: " + three.value);
+            }}
+        });
+        return HomeController;
+      })();
+      HomeController.$inject = ["HomeService"];
+      _export("default", HomeController);
     }
   };
 });
 
 System.register("modules/home/home-service", [], function(_export) {
-  var HomeService;
-  function HomeService($q) {
-    "use strict";
-    this.getGreeting = function() {
-      var name = arguments[0] === undefined ? "Noname McDefault" : arguments[0];
-      return $q(function(resolve) {
-        return resolve("Hello, " + name + ".  Welcome to Angular in ES6!!");
-      });
-    };
-  }
+  var _createClass,
+      _classCallCheck,
+      HomeService;
   return {
     setters: [],
     execute: function() {
       "use strict";
+      _createClass = (function() {
+        function defineProperties(target, props) {
+          for (var key in props) {
+            var prop = props[key];
+            prop.configurable = true;
+            if (prop.value)
+              prop.writable = true;
+          }
+          Object.defineProperties(target, props);
+        }
+        return function(Constructor, protoProps, staticProps) {
+          if (protoProps)
+            defineProperties(Constructor.prototype, protoProps);
+          if (staticProps)
+            defineProperties(Constructor, staticProps);
+          return Constructor;
+        };
+      })();
+      _classCallCheck = function(instance, Constructor) {
+        if (!(instance instanceof Constructor)) {
+          throw new TypeError("Cannot call a class as a function");
+        }
+      };
+      HomeService = (function() {
+        function HomeService($q) {
+          _classCallCheck(this, HomeService);
+          this.$q = $q;
+        }
+        _createClass(HomeService, {getGreeting: {value: function getGreeting() {
+              var name = arguments[0] === undefined ? "Noname McDefault" : arguments[0];
+              return this.$q(function(resolve) {
+                return resolve("Hello, " + name + ".  Welcome to Angular in ES6!!");
+              });
+            }}});
+        return HomeService;
+      })();
       HomeService.$inject = ["$q"];
-      HomeService = HomeService;
-      _export("HomeService", HomeService);
+      _export("default", HomeService);
     }
   };
 });
@@ -522,9 +579,9 @@ System.register("modules/home/home", ["modules/home/home-controller", "modules/h
       homeModule;
   return {
     setters: [function(_homeController) {
-      HomeController = _homeController.HomeController;
+      HomeController = _homeController["default"];
     }, function(_homeService) {
-      HomeService = _homeService.HomeService;
+      HomeService = _homeService["default"];
     }],
     execute: function() {
       "use strict";
