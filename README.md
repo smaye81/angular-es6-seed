@@ -24,8 +24,12 @@ To run app:
 * Navigate to localhost:9000
 * $$$
 
+Branches:
+
+_master_: Uses Traceur
+_babel_: Uses babel
+
 
 To Do:
 
 * Tests
-* Add branch for Babel configuration of Traceur
