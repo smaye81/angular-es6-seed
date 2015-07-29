@@ -3,6 +3,25 @@ class HomeController {
 
     constructor(HomeService){
         this.HomeService = HomeService;
+        if (true) {
+        if (true) {
+        if (true) {
+        if (true) {
+        if (true) {
+        if (true) {
+        if (true) {
+        if (true) {
+        if (true) {
+          console.log('asdf');
+        }
+        }
+        }
+        }
+        }
+        }
+        }
+        }
+        }
     }
 
     sayHello(){
