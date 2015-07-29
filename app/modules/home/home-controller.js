@@ -6,6 +6,8 @@ class HomeController {
     }
 
     sayHello(){
+        var a = new Array();
+	what?
         this.HomeService.getGreeting(this.name).then(greeting => this.greeting = greeting);
     }
 
